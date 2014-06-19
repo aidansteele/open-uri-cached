@@ -38,7 +38,7 @@ module OpenURI
         # Read metadata, if it exists
         meta = YAML::load(File.read("#{filename}.meta")) if File.exists?("#{filename}.meta")
 
-        f = File.exists?(filename) ? StringIO.new(File.open(filename, "rb") { |f| f.read }) : nil
+        f = File.exists?(filename) ? File.open(filename, "rb") : nil
 
         # Add meta accessors
         if meta && f
